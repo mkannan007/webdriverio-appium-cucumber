@@ -1,6 +1,6 @@
 import { When } from '@wdio/cucumber-framework';
 
-import { commonPage, issuesCarouselPage } from '../page/base.page.ts';
+import { commonPage } from '../page/base.page.ts';
 
 When(
   /^I scroll to "(.*)" in Issues carousel page$/,

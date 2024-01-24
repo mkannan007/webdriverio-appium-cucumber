@@ -1,6 +1,7 @@
 import { When } from '@wdio/cucumber-framework';
 
 import { commonPage, subscriptionSignInPage } from '../page/base.page.ts';
+import * as BASE_CONFIG from '../config/base.config.ts';
 
 When(
   /^I "(.*)" with valid credentials on the paywall carousel$/,
@@ -8,18 +9,30 @@ When(
     await commonPage.doubleClickTextView(textValue);
 
     if (
-      (await subscriptionSignInPage.isAcceptAndContinueDisplayed()) === true
+      (await commonPage.isButtonTextDisplayed(
+        BASE_CONFIG.ACCEPT_AND_CONTINUE_BUTTON_TEXT,
+      )) === true
     ) {
-      await subscriptionSignInPage.clickAcceptAndContinue();
+      await commonPage.clickButtonText(
+        BASE_CONFIG.ACCEPT_AND_CONTINUE_BUTTON_TEXT,
+      );
     }
 
-    if ((await subscriptionSignInPage.isNoThanksDisplayed()) === true) {
-      await subscriptionSignInPage.clickNoThanks();
+    if (
+      (await commonPage.isButtonTextDisplayed(
+        BASE_CONFIG.NO_THANKS_BUTTON_TEXT,
+      )) === true
+    ) {
+      await commonPage.clickButtonText(BASE_CONFIG.NO_THANKS_BUTTON_TEXT);
     }
 
-    await commonPage.waitForText('Sign in to your Mail account');
-    await subscriptionSignInPage.enterEmail('mailqatest94@gmail.com');
-    await subscriptionSignInPage.enterPassword('World123!');
-    await subscriptionSignInPage.clickSignInButton();
+    await commonPage.waitForText(BASE_CONFIG.SUBSCRIPTION_PAGE_HEADER_TEXT);
+    await subscriptionSignInPage.enterEmail(
+      BASE_CONFIG.SUBSCRIPTION_EMAIL_USER_NAME,
+    );
+    await subscriptionSignInPage.enterPassword(
+      BASE_CONFIG.SUBSCRIPTION_EMAIL_PASSWORD,
+    );
+    await commonPage.clickButtonText(textValue);
   },
 );

@@ -6,6 +6,7 @@ export class CommonPage {
     textContains: string;
     textView: string;
     textContainsView: string;
+    buttonText: string;
     scrollText: string;
     scrollHorizontal: string;
   };
@@ -18,6 +19,8 @@ export class CommonPage {
         'android=new UiSelector().text("textValue").className("android.widget.TextView")',
       textContainsView:
         'android=new UiSelector().textContains("textValue").className("android.widget.TextView")',
+      buttonText:
+        'android=new UiSelector().text("buttonText").className("android.widget.Button")',
       scrollText:
         'android=new UiScrollable(new UiSelector().className("android.widget.ScrollView").scrollable(true)).scrollTextIntoView("textValue")',
       scrollHorizontal:
@@ -42,6 +45,10 @@ export class CommonPage {
     return $(this.locators.textContainsView.replace('textValue', textValue));
   }
 
+  private buttonText(buttonText: string): Promise<WebdriverIO.Element> {
+    return $(this.locators.buttonText.replace('buttonText', buttonText));
+  }
+
   private scrollText(textValue: string): Promise<WebdriverIO.Element> {
     return $(this.locators.scrollText.replace('textValue', textValue));
   }
@@ -61,7 +68,7 @@ export class CommonPage {
     (await this.text(textValue)).click();
   }
 
-  public async isPageTextDisplayed(textValue: string): Promise<boolean> {
+  public async isTextViewDisplayed(textValue: string): Promise<boolean> {
     return (await this.textView(textValue)).isDisplayed();
   }
 
@@ -100,6 +107,15 @@ export class CommonPage {
     await driver.execute('mobile: doubleClickGesture', {
       elementId: await this.textView(textValue),
     });
+  }
+
+  public async isButtonTextDisplayed(buttonText: string): Promise<boolean> {
+    return (await this.buttonText(buttonText)).isDisplayed();
+  }
+
+  public async clickButtonText(buttonText: string): Promise<void> {
+    (await this.buttonText(buttonText)).waitForDisplayed();
+    (await this.buttonText(buttonText)).click();
   }
 
   public async scrollToTextView(scrollText: string): Promise<void> {

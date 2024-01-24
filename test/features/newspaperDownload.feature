@@ -4,7 +4,7 @@ Feature: Newspaper edition download
 
     Scenario: Verify the Newspaper edition is downloadable
         Given I launch the app
-        And I navigate to issues home page
+        And I click "Continue" button to navigate issues home page
         When I scroll to "Recent issues" in Issues carousel page
         And I scroll right to "SEE MORE" in Recent Issues and tap on it in Issues carousel page
         And I scroll and tap on "6 January 2024" edition in "Archive" tab
