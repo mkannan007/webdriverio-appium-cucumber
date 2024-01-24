@@ -26,12 +26,6 @@ export class DownloadedEditionFrontPage {
     );
   }
 
-  private get downloadBar(): Promise<WebdriverIO.Element> {
-    return $(
-      '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.widget.FrameLayout[3]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[2]/android.view.ViewGroup[2]',
-    );
-  }
-
   private get sectionsMenu(): Promise<WebdriverIO.Element> {
     return $(
       'android=new UiSelector().className("android.view.ViewGroup").description("Tap me to open the sections menu")',
@@ -49,14 +43,6 @@ export class DownloadedEditionFrontPage {
 
   public async clickFrontPageTab(): Promise<void> {
     (await this.frontPage).click();
-  }
-
-  public async waitForDownloadProgressBar(): Promise<void> {
-    (await this.downloadBar).waitForDisplayed();
-  }
-
-  public async isDownloadProgressBarNotDisplayed(): Promise<boolean> {
-    return (await this.downloadBar).isDisplayed();
   }
 
   public async isSectionsMenuEnabled(): Promise<boolean> {

@@ -165,7 +165,7 @@ export const config: Options.Testrunner = {
       'cucumberjs-json',
       {
         reportFilePerRetry: true,
-        jsonFolder: './test/target/json',
+        jsonFolder: pathToJson,
         language: 'en',
       },
     ],
@@ -367,8 +367,8 @@ export const config: Options.Testrunner = {
   onComplete: () => {
     // Generate the report when all tests are done
     generate({
-      jsonDir: './test/target/json',
-      reportPath: './test/target',
+      jsonDir: pathToJson,
+      reportPath: pathToTarget,
       displayDuration: true,
       customMetadata: false,
       openReportInBrowser: false,

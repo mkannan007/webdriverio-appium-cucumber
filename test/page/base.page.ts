@@ -1,3 +1,4 @@
+import { CommonPage } from '../pageObjects/common.page.ts';
 import { LandingPage } from '../pageObjects/landing.page.ts';
 import { QuickTourPage } from '../pageObjects/quickTour.page.ts';
 import { IssuesCarouselPage } from '../pageObjects/issuesCarousel.page.ts';
@@ -7,6 +8,7 @@ import { DownloadedEditionFrontPage } from '../pageObjects/downloadedEditionFron
 import { DownloadedEditionNewsPage } from '../pageObjects/downloadedEditionNews.page.ts';
 import { GalleryPage } from '../pageObjects/gallery.page.ts';
 
+export const commonPage = new CommonPage();
 export const landingPage = new LandingPage();
 export const quickTourPage = new QuickTourPage();
 export const issuesCarouselPage = new IssuesCarouselPage();

@@ -1,12 +1,12 @@
 import { Then, When } from '@wdio/cucumber-framework';
 
-import { archiveTabPage } from '../page/base.page.ts';
+import { commonPage } from '../page/base.page.ts';
 
 When(
-  /^I scroll and tap on "(.*)" edition in Archive tab$/,
-  async (editionDate: string) => {
-    await archiveTabPage.clickArchiveTab();
-    await archiveTabPage.scrollToTextValue(editionDate);
-    await archiveTabPage.clickTextView(editionDate);
+  /^I scroll and tap on "(.*)" edition in "(.*)" tab$/,
+  async (editionDate: string, tabName: string) => {
+    await commonPage.clickTextView(tabName);
+    await commonPage.scrollToTextView(editionDate);
+    await commonPage.clickTextView(editionDate);
   },
 );

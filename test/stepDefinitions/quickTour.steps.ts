@@ -1,6 +1,6 @@
 import { Given } from '@wdio/cucumber-framework';
 
-import { landingPage, quickTourPage } from '../page/base.page.ts';
+import { commonPage, landingPage, quickTourPage } from '../page/base.page.ts';
 
 Given(/^I navigate to issues home page$/, async () => {
   await landingPage.waitForFailoverBannerText();
@@ -10,14 +10,12 @@ Given(/^I navigate to issues home page$/, async () => {
 
   for (let i = 1; i <= 5; i++) {
     stepContext = `Step ${i} of 5`;
-    const stepContextElement = await $(
-      `android=new UiSelector().textContains("${stepContext}").className("android.widget.TextView")`,
-    );
+    // const stepContextElement = await $(
+    //   `android=new UiSelector().textContains("${stepContext}").className("android.widget.TextView")`,
+    // );
 
-    await stepContextElement.waitForDisplayed();
-
-    // await quickTourPage.waitForPageText(stepContext);
-    await quickTourPage.clickTextView('Continue');
+    await commonPage.waitForTextContainsView(stepContext);
+    await commonPage.clickTextView('Continue');
     await driver.pause(2000);
   }
 });
