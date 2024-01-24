@@ -1,42 +1,44 @@
-import { $ } from "@wdio/globals";
+import { $ } from '@wdio/globals';
 
 export class DownloadedEditionNewsPage {
+  // Elements
   private get newsTab(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().className("android.widget.HorizontalScrollView").childSelector(new UiSelector().text("News").className("android.widget.TextView"))'
+      'android=new UiSelector().className("android.widget.HorizontalScrollView").childSelector(new UiSelector().text("News").className("android.widget.TextView"))',
     );
   }
 
   private textView(textValue: string): Promise<WebdriverIO.Element> {
     return $(
       'android=new UiSelector().text("textValue").className("android.widget.TextView")'.replace(
-        "textValue",
-        textValue
-      )
+        'textValue',
+        textValue,
+      ),
     );
   }
 
   private get imageLinearLayout(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().className("androidx.recyclerview.widget.RecyclerView").childSelector(new UiSelector().className("android.widget.LinearLayout"))'
+      'android=new UiSelector().className("androidx.recyclerview.widget.RecyclerView").childSelector(new UiSelector().className("android.widget.LinearLayout"))',
     );
   }
 
   private textLayout(textValue: string): Promise<WebdriverIO.Element> {
     return $(
       'android=new UiSelector().text("textValue").className("android.view.View")'.replace(
-        "textValue",
-        textValue
-      )
+        'textValue',
+        textValue,
+      ),
     );
   }
 
   private get imageViewer(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().text("image").className("android.widget.Image")'
+      'android=new UiSelector().text("image").className("android.widget.Image")',
     );
   }
 
+  // Methods
   public async clickNewsTab(): Promise<void> {
     (await this.newsTab).waitForDisplayed();
     (await this.newsTab).click();

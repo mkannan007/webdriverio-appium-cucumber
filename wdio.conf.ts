@@ -1,12 +1,11 @@
-import type { Options } from "@wdio/types";
-import { join, resolve } from "path";
-import fs from "fs";
-import { generate } from "multiple-cucumber-html-reporter";
-import cucumberJson from "wdio-cucumberjs-json-reporter";
+import type { Options } from '@wdio/types';
+import { join, resolve } from 'path';
+import fs from 'fs';
+import { generate } from 'multiple-cucumber-html-reporter';
+import cucumberJson from 'wdio-cucumberjs-json-reporter';
 
-// const pathToLogs = resolve("test/logs");
-const pathToTarget = resolve("test/target");
-const pathToJson = resolve("test/target/json");
+const pathToTarget = resolve('test/target');
+const pathToJson = resolve('test/target/json');
 
 export const config: Options.Testrunner = {
   //
@@ -14,11 +13,11 @@ export const config: Options.Testrunner = {
   // Runner Configuration
   // ====================
   // WebdriverIO supports running e2e tests as well as unit and component tests.
-  runner: "local",
+  runner: 'local',
   autoCompileOpts: {
     autoCompile: true,
     tsNodeOpts: {
-      project: "./tsconfig.json",
+      project: './tsconfig.json',
       files: true,
       transpileOnly: true,
     },
@@ -30,7 +29,6 @@ export const config: Options.Testrunner = {
   // Specify Test Files
   // ==================
   // Define which test specs should run. The pattern is relative to the directory
-  
   // of the configuration file being run.
   //
   // The specs are defined as an array of spec files (optionally using wildcards
@@ -43,7 +41,7 @@ export const config: Options.Testrunner = {
   //
   specs: [
     // ToDo: define location for spec files here
-    "./test/**/*.feature",
+    './test/**/*.feature',
   ],
   // Patterns to exclude.
   exclude: [
@@ -74,11 +72,11 @@ export const config: Options.Testrunner = {
   capabilities: [
     {
       // capabilities for local Appium web tests on an Android Emulator
-      platformName: "android",
-      "appium:platformVersion": "12.0",
-      "appium:deviceName": "Google Pixel 6 Pro",
-      "appium:automationName": "UiAutomator2",
-      "appium:app": join(process.cwd(), "src\\app\\android\\dmg.apk"),
+      platformName: 'android',
+      'appium:platformVersion': '12.0',
+      'appium:deviceName': 'Google Pixel 6 Pro',
+      'appium:automationName': 'UiAutomator2',
+      'appium:app': join(process.cwd(), 'src\\app\\android\\dmg.apk'),
     },
   ],
   //
@@ -88,7 +86,7 @@ export const config: Options.Testrunner = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
-  logLevel: "trace",
+  logLevel: 'trace',
   //
   // Set specific log levels per logger
   // loggers:
@@ -112,7 +110,7 @@ export const config: Options.Testrunner = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "",
+  baseUrl: '',
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 90000,
@@ -131,10 +129,10 @@ export const config: Options.Testrunner = {
   // services: [["browserstack", { browserstackLocal: true }]],
   services: [
     [
-      "appium",
+      'appium',
       {
         args: {
-          address: "127.0.0.1",
+          address: '127.0.0.1',
           port: 4727,
         },
       },
@@ -146,7 +144,7 @@ export const config: Options.Testrunner = {
   //
   // Make sure you have the wdio adapter package for the specific framework installed
   // before running any tests.
-  framework: "cucumber",
+  framework: 'cucumber',
 
   //
   // The number of times to retry the entire specfile when it fails as a whole
@@ -162,13 +160,13 @@ export const config: Options.Testrunner = {
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
   reporters: [
-    "spec",
+    'spec',
     [
-      "cucumberjs-json",
+      'cucumberjs-json',
       {
         reportFilePerRetry: true,
-        jsonFolder: "./test/target/json",
-        language: "en",
+        jsonFolder: './test/target/json',
+        language: 'en',
       },
     ],
   ],
@@ -176,7 +174,7 @@ export const config: Options.Testrunner = {
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {
     // <string[]> (file/dir) require files before executing features
-    require: ["./test/**/*.ts"],
+    require: ['./test/**/*.ts'],
     // <boolean> show full backtrace for errors
     backtrace: false,
     // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
@@ -192,7 +190,7 @@ export const config: Options.Testrunner = {
     // <boolean> fail if there are any undefined or pending steps
     strict: false,
     // <string> (expression) only execute the features or scenarios with tags matching the expression
-    tagExpression: "",
+    tagExpression: '',
     // <number> timeout for step definitions
     timeout: 600000,
     // <boolean> Enable this config to treat undefined definitions as warnings.
@@ -307,7 +305,7 @@ export const config: Options.Testrunner = {
   // afterStep: function (step, scenario, result, context) {
   // },
   afterStep: async () => {
-    cucumberJson.attach(await driver.takeScreenshot(), "image/png");
+    cucumberJson.attach(await driver.takeScreenshot(), 'image/png');
   },
   /**
    *
@@ -369,21 +367,24 @@ export const config: Options.Testrunner = {
   onComplete: () => {
     // Generate the report when all tests are done
     generate({
-      jsonDir: "./test/target/json",
-      reportPath: "./test/target",
+      jsonDir: './test/target/json',
+      reportPath: './test/target',
       displayDuration: true,
       customMetadata: false,
       openReportInBrowser: false,
       disableLog: true,
-      pageTitle: "Test Automation",
-      reportName: "Test Automation Report",
+      pageTitle: 'Test Automation',
+      reportName: 'Test Automation Report',
       customData: {
-        title: "Test Automation Run Info",
+        title: 'Test Automation Run Info',
         data: [
-          { label: "Framework", value: "WebdriverIO-Appium-Cucumber-TypeScript" },
-          { label: "Platform", value: "Android" },
-          { label: "Device", value: "Google Pixel 6 Pro" },
-          { label: "Version", value: "12.0" },
+          {
+            label: 'Framework',
+            value: 'WebdriverIO-Appium-Cucumber-TypeScript',
+          },
+          { label: 'Platform', value: 'Android' },
+          { label: 'Device', value: 'Google Pixel 6 Pro' },
+          { label: 'Version', value: '12.0' },
         ],
       },
     });

@@ -1,12 +1,13 @@
-import { $ } from "@wdio/globals";
+import { $ } from '@wdio/globals';
 
 export class GalleryPage {
+  // Elements
   private textView(textValue: string): Promise<WebdriverIO.Element> {
     return $(
       'android=new UiSelector().text("textValue").className("android.widget.TextView")'.replace(
-        "textValue",
-        textValue
-      )
+        'textValue',
+        textValue,
+      ),
     );
   }
 
@@ -16,14 +17,15 @@ export class GalleryPage {
 
   private get close(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().text("Close").className("android.widget.TextView")'
+      'android=new UiSelector().text("Close").className("android.widget.TextView")',
     );
   }
 
+  // Methods
   public async swipeImage(): Promise<void> {
-    await driver.execute("mobile: swipeGesture", {
+    await driver.execute('mobile: swipeGesture', {
       elementId: await this.imageView,
-      direction: "left",
+      direction: 'left',
       percent: 0.5,
       speed: 1000,
     });

@@ -1,6 +1,6 @@
-import { Given, Then, When } from "@wdio/cucumber-framework";
+import { Given, Then, When } from '@wdio/cucumber-framework';
 
-import { downloadedEditionFrontPage, landingPage } from "../page/base.page.ts";
+import { downloadedEditionFrontPage, landingPage } from '../page/base.page.ts';
 
 const setTimeoutSeconds = (seconds: number) => {
   const currentDate = new Date();
@@ -37,13 +37,12 @@ Then(
     do {
       if (new Date() > timeout) {
         throw new Error(
-          "Downloading edition timed out. Please check the network connection and try again."
+          'Downloading edition timed out. Please check the network connection and try again.',
         );
       }
       // await driver.pause(3000);
     } while (
-      (await downloadedEditionFrontPage.isSectionsMenuEnabled()) ===
-      false
+      (await downloadedEditionFrontPage.isSectionsMenuEnabled()) === false
     );
 
     await landingPage.clickFailoverCloseBanner();
@@ -51,14 +50,19 @@ Then(
     //   await downloadedEditionFrontPage.isSectionsMenuEnabled();
 
     expect(await downloadedEditionFrontPage.isSectionsMenuEnabled()).toBe(true);
-    expect(await downloadedEditionFrontPage.isPageTextDisplayed(editionDate)).toBe(true);
-  }
+    expect(
+      await downloadedEditionFrontPage.isPageTextDisplayed(editionDate),
+    ).toBe(true);
+  },
 );
 
-Given(/^I am on the "(.*)" on "(.*)" tab$/, async (editionDate: string, tabName: string) => {
-  await downloadedEditionFrontPage.waitForPageText(editionDate);
-  await downloadedEditionFrontPage.waitForPageText(tabName);
-});
+Given(
+  /^I am on the "(.*)" on "(.*)" tab$/,
+  async (editionDate: string, tabName: string) => {
+    await downloadedEditionFrontPage.waitForPageText(editionDate);
+    await downloadedEditionFrontPage.waitForPageText(tabName);
+  },
+);
 
 Given(/^I scroll to page (\d+) of the news page$/, async (page: number) => {
   await downloadedEditionFrontPage.scrollHorizontal(`"${page - 1}"`);

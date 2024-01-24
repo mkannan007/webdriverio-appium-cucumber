@@ -1,9 +1,7 @@
-import { $ } from "@wdio/globals";
+import { $ } from '@wdio/globals';
 
-/**
- * sub page containing specific selectors and methods for a specific page
- */
 export class SubscriptionSignInPage {
+  // Elements
   private get welcomeText(): Promise<WebdriverIO.Element> {
     return $('android=new UiSelector().textContains("Welcome to Mail")');
   }
@@ -11,21 +9,21 @@ export class SubscriptionSignInPage {
   private textView(textValue: string): Promise<WebdriverIO.Element> {
     return $(
       'android=new UiSelector().text("TextValue").className("android.widget.TextView")'.replace(
-        "TextValue",
-        textValue
-      )
+        'TextValue',
+        textValue,
+      ),
     );
   }
 
   private get acceptAndContinue(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().text("Accept & continue").className("android.widget.Button")'
+      'android=new UiSelector().text("Accept & continue").className("android.widget.Button")',
     );
   }
 
   private get noThanks(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().text("No thanks").className("android.widget.Button")'
+      'android=new UiSelector().text("No thanks").className("android.widget.Button")',
     );
   }
 
@@ -35,29 +33,28 @@ export class SubscriptionSignInPage {
 
   private get emailTextEdit(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().resourceId("login.email").className("android.widget.EditText")'
+      'android=new UiSelector().resourceId("login.email").className("android.widget.EditText")',
     );
   }
 
   private get passwordTextEdit(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().resourceId("login.password").className("android.widget.EditText")'
+      'android=new UiSelector().resourceId("login.password").className("android.widget.EditText")',
     );
   }
 
   private get signInButton(): Promise<WebdriverIO.Element> {
     return $(
-      'android=new UiSelector().text("Sign in").className("android.widget.Button")'
+      'android=new UiSelector().text("Sign in").className("android.widget.Button")',
     );
   }
 
+  // Methods
   public async waitForWelcomeMailSubscription(): Promise<void> {
     (await this.welcomeText).waitForDisplayed();
   }
 
   public async clickTextView(textValue: string): Promise<void> {
-    // (await this.textView(textValue)).waitForDisplayed();
-    // (await this.textView(textValue)).click();
     await driver.execute('mobile: doubleClickGesture', {
       elementId: await this.textView(textValue),
     });
@@ -99,6 +96,6 @@ export class SubscriptionSignInPage {
 
   public async clickSignInButton(): Promise<void> {
     (await this.signInButton).waitForDisplayed();
-    (await this.signInButton).click();``
+    (await this.signInButton).click();
   }
 }
