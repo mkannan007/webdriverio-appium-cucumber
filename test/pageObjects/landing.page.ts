@@ -9,7 +9,7 @@ export class LandingPage {
   }
 
   private get failoverClose(): Promise<WebdriverIO.Element> {
-     return $(
+    return $(
       'android=new UiSelector().textContains("This is a failover test").fromParent(new UiSelector().className("android.view.ViewGroup"))',
     );
   }
