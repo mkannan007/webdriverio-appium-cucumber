@@ -6,7 +6,7 @@ Update wdio.conf.ts with the following
 
 Follow the below expect setting Android Virtual Device
 
-# Please follow the below steps to run this in your local machine
+# Please follow the below steps to run this project in your local machine
 
 ## Installation 
 1. Download and Install Latest NodeJs **[Download link](https://nodejs.org/en)** or through package manager [Download link](https://nodejs.org/en/download/package-manager)
@@ -61,4 +61,4 @@ Follow the below expect setting Android Virtual Device
 4. The code for the page wise object repositories are maintained under the `test/pageObjects` directory
 5. The code for the scenario step implementaions are maintained under the `test/stepDefinitions` directory
 6. The outcome of the test execution and cucumber html report will under the `test/target` directory
-7. The webdriverio config file `wdio.conf.ts`, `tsconfig.json` and the formatter `prettierrc` are maintained in the root
+7. The webdriverio config file `wdio.conf.ts`, `tsconfig.json` and the formatter `.prettierrc` are maintained in the root
