@@ -38,6 +38,8 @@ Follow the below expect setting Android Virtual Device
 ### To Run the test
 `npm run wdio`
 
+# A Sample Test Report target folder is already pushed to the main page for your reference as below
+
 ## To see the html report after the test execution
 
 - `Project Explorer --> test --> target`
