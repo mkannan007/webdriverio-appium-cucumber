@@ -28,7 +28,7 @@ export class CommonPage {
     };
   }
 
-  // Element Getters
+  // Elements
   private text(textValue: string): Promise<WebdriverIO.Element> {
     return $(this.locators.text.replace('textValue', textValue));
   }
@@ -57,8 +57,7 @@ export class CommonPage {
     return $(this.locators.scrollHorizontal);
   }
 
-  // Action Methods
-
+  // Methods
   public async waitForText(textValue: string): Promise<void> {
     (await this.text(textValue)).waitForDisplayed();
   }
