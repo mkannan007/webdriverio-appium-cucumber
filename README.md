@@ -55,10 +55,11 @@ Follow the below expect setting Android Virtual Device
 
 ## Project Folder Structure
 
-1. The code for the base config files are maintained under the `test/config` directory
-2. The test scenarios for the feature files are maintained under the `test/features` directory
-3. The code for the base page is maintained under the `test/page` directory
-4. The code for the page wise object repositories are maintained under the `test/pageObjects` directory
-5. The code for the scenario step implementaions are maintained under the `test/stepDefinitions` directory
-6. The outcome of the test execution and cucumber html report will under the `test/target` directory
-7. The webdriverio config file `wdio.conf.ts`, `tsconfig.json` and the formatter `.prettierrc` are maintained in the root
+1. The Android App `.apk` file is stored under the `src/app/android` directory
+2. The code for the base config files are maintained under the `test/config` directory
+3. The test scenarios for the feature files are maintained under the `test/features` directory
+4. The code for the base page is maintained under the `test/page` directory
+5. The code for the page wise object repositories are maintained under the `test/pageObjects` directory
+6. The code for the scenario step implementaions are maintained under the `test/stepDefinitions` directory
+7. The outcome of the test execution and cucumber html report will under the `test/target` directory
+8. The webdriverio config file `wdio.conf.ts`, `tsconfig.json` and the formatter `.prettierrc` are maintained in the root
