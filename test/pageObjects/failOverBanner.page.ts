@@ -1,6 +1,6 @@
 import { $ } from '@wdio/globals';
 
-export class FailOverBannerPage {
+export class FailOverBanner {
   // Elements
   private get failoverClose(): Promise<WebdriverIO.Element> {
     return $(
