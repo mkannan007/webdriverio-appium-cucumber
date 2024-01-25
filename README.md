@@ -29,8 +29,8 @@ Follow the below expect setting Android Virtual Device
 `abd devices`
 
 ### Check Node installation
-`node --version` 
-`npm --version`
+- `node --version` 
+- `npm --version`
 
 ### Install Package Dependencies
 `npm install`
@@ -38,7 +38,7 @@ Follow the below expect setting Android Virtual Device
 ### To Run the test
 `npm run wdio`
 
-# A Sample Test Report target folder is already pushed to the main page for your reference as below
+# Automation Test Execution Report target folder is already pushed to the main branch for your reference as below, Please download and see
 
 ## To see the html report after the test execution
 
