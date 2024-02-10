@@ -10,6 +10,7 @@ export class FailOverBanner {
 
   // Methods
   public async clickFailoverCloseBanner(): Promise<void> {
+    await (await this.failoverClose).waitForDisplayed();
     (await this.failoverClose).click();
   }
 }

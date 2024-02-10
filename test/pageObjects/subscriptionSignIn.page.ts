@@ -16,13 +16,13 @@ export class SubscriptionSignInPage {
 
   // Methods
   public async enterEmail(username: string): Promise<void> {
-    (await this.emailTextEdit).waitForDisplayed();
+    await (await this.emailTextEdit).waitForDisplayed();
     (await this.emailTextEdit).clearValue();
     (await this.emailTextEdit).setValue(username);
   }
 
   public async enterPassword(password: string): Promise<void> {
-    (await this.passwordTextEdit).waitForDisplayed();
+    await (await this.passwordTextEdit).waitForDisplayed();
     (await this.passwordTextEdit).clearValue();
     (await this.passwordTextEdit).setValue(password);
   }

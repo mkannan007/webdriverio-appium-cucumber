@@ -23,6 +23,6 @@ export class FrontPageTab {
   }
 
   public async scrollHorizontal(steps: string): Promise<void> {
-    (await this.swipeHorizontal(steps)).waitForDisplayed();
+    await (await this.swipeHorizontal(steps)).waitForDisplayed();
   }
 }

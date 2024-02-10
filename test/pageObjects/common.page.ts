@@ -59,46 +59,46 @@ export class CommonPage {
 
   // Methods
   public async waitForText(textValue: string): Promise<void> {
-    (await this.text(textValue)).waitForDisplayed();
+    await (await this.text(textValue)).waitForDisplayed();
   }
 
   public async clickText(textValue: string): Promise<void> {
-    (await this.text(textValue)).waitForDisplayed();
+    await (await this.text(textValue)).waitForDisplayed();
     (await this.text(textValue)).click();
   }
 
   public async isTextViewDisplayed(textValue: string): Promise<boolean> {
-    return (await this.textView(textValue)).isDisplayed();
+    return await (await this.textView(textValue)).isDisplayed();
   }
 
   public async waitForTextContains(textValue: string): Promise<void> {
-    (await this.textContains(textValue)).waitForDisplayed();
+    await (await this.textContains(textValue)).waitForDisplayed();
   }
 
   public async clickTextContains(textValue: string): Promise<void> {
-    (await this.textContains(textValue)).waitForDisplayed();
+    await (await this.textContains(textValue)).waitForDisplayed();
     (await this.textContains(textValue)).click();
   }
 
   public async isTextContainsDisplayed(textValue: string): Promise<boolean> {
-    return (await this.textContains(textValue)).isDisplayed();
+    return await (await this.textContains(textValue)).isDisplayed();
   }
 
   public async waitForTextView(textValue: string): Promise<void> {
-    (await this.textView(textValue)).waitForDisplayed();
+    await (await this.textView(textValue)).waitForDisplayed();
   }
 
   public async clickTextView(textValue: string): Promise<void> {
-    (await this.textView(textValue)).waitForDisplayed();
+    await (await this.textView(textValue)).waitForDisplayed();
     (await this.textView(textValue)).click();
   }
 
   public async waitForTextContainsView(textValue: string): Promise<void> {
-    (await this.textContainsView(textValue)).waitForDisplayed();
+    await (await this.textContainsView(textValue)).waitForDisplayed();
   }
 
   public async clickTextContainsView(textValue: string): Promise<void> {
-    (await this.textContainsView(textValue)).waitForDisplayed();
+    await (await this.textContainsView(textValue)).waitForDisplayed();
     (await this.textContainsView(textValue)).click();
   }
 
@@ -109,19 +109,19 @@ export class CommonPage {
   }
 
   public async isButtonTextDisplayed(buttonText: string): Promise<boolean> {
-    return (await this.buttonText(buttonText)).isDisplayed();
+    return await (await this.buttonText(buttonText)).isDisplayed();
   }
 
   public async clickButtonText(buttonText: string): Promise<void> {
-    (await this.buttonText(buttonText)).waitForDisplayed();
+    await (await this.buttonText(buttonText)).waitForDisplayed();
     (await this.buttonText(buttonText)).click();
   }
 
   public async scrollToTextView(scrollText: string): Promise<void> {
-    (await this.scrollText(scrollText)).waitForDisplayed();
+    await (await this.scrollText(scrollText)).waitForDisplayed();
   }
 
   public async scrollHorizontalToEnd(): Promise<void> {
-    (await this.swipeHorizontal).waitForDisplayed();
+    await (await this.swipeHorizontal).waitForDisplayed();
   }
 }

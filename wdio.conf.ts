@@ -170,6 +170,18 @@ export const config: Options.Testrunner = {
       },
     ],
   ],
+  /**
+   * The number of times to retry the entire specfile when it fails as a whole
+   */
+  specFileRetries: 1,
+  /**
+   * Delay in seconds between the spec file retry attempts
+   */
+  specFileRetriesDelay: 0,
+  /**
+   * Retried specfiles are inserted at the beginning of the queue and retried immediately
+   */
+  specFileRetriesDeferred: false,
 
   // If you are using Cucumber you need to specify the location of your step definitions.
   cucumberOpts: {

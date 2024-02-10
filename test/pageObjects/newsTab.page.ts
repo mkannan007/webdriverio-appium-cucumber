@@ -16,12 +16,12 @@ export class NewsTabPage {
 
   // Methods
   public async clickImageLinearLayout(): Promise<void> {
-    (await this.imageLinearLayout).waitForDisplayed();
+    await (await this.imageLinearLayout).waitForDisplayed();
     (await this.imageLinearLayout).click();
   }
 
   public async clickGalleryViewer(): Promise<void> {
-    (await this.imageViewer).waitForDisplayed();
+    await (await this.imageViewer).waitForDisplayed();
     (await this.imageViewer).click();
   }
 }
